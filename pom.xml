@@ -19,6 +19,9 @@
         <allure.version>2.29.0</allure.version>
         <lombok.version>1.18.30</lombok.version>
         <owner.version>1.0.11</owner.version>
+        <selenium.version>4.23.1</selenium.version>
+        <webdrivermanager.version>5.9.2</webdrivermanager.version>
+        <aspectjweaver.version>1.9.21</aspectjweaver.version>
     </properties>
 
     <dependencies>
@@ -64,6 +67,23 @@
             <artifactId>owner</artifactId>
             <version>${owner.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,6 +96,9 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"
+                    </argLine>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
