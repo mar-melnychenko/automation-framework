@@ -1,4 +1,4 @@
-package org.example.tests;
+package org.example.tests.api;
 
 import org.example.api.models.Pet;
 import org.example.api.service.PetService;

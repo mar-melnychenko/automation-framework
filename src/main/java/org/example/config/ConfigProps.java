@@ -22,4 +22,7 @@ public interface ConfigProps extends Config {
     @Key("base_api_url")
     String baseApiUrl();
 
+    @Key("headless")
+    boolean headless();
+
 }
