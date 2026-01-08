@@ -45,16 +45,16 @@ public abstract class BaseApiClient {
     return given().spec(spec).when().get(path).then().extract().as(typeRef);
   }
 
-  protected <T> T post(String path, Object body, Class<T> clazz) {
-    return postRaw(path, body).as(clazz);
+  protected Response getRaw(String path) {
+    return given().spec(spec).when().get(path).then().extract().response();
   }
 
   protected Response postRaw(String path, Object body) {
     return given().spec(spec).body(body).when().post(path).then().extract().response();
   }
 
-  protected <T> T put(String path, Object body, Class<T> clazz) {
-    return given().spec(spec).body(body).when().put(path).then().extract().response().as(clazz);
+  protected Response putRaw(String path, Object body) {
+    return given().spec(spec).body(body).when().put(path).then().extract().response();
   }
 
   protected Response delete(String path) {

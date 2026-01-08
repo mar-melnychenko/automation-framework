@@ -10,27 +10,23 @@ import java.util.List;
 public class PetService extends BaseApiClient {
     private final String basePath = "/pet";
 
-    public Pet createPet(Pet petData) {
-        return post(basePath, petData, Pet.class);
-    }
-
     public Response createPetRaw(Pet petData) {
         return postRaw(basePath, petData);
     }
 
-    public Pet updatePet(String id, Pet petData) {
-        return put(basePath + "/" + id, petData, Pet.class);
+    public Response updatePetRaw(Pet petData) {
+        return putRaw(basePath, petData);
     }
 
-    public Pet getPetDetails(String id) {
-        return get(basePath + "/" + id, Pet.class);
+    public Response getPetDetailsRaw(String id) {
+        return getRaw(basePath + "/" + id);
     }
 
     public List<Pet> getPetsByStatus(String status) {
         return get(basePath + "/findByStatus?status=" + status, new TypeRef<>() {});
     }
 
-    public Response deleteSearch(String id) {
+    public Response deletePet(String id) {
         return delete(basePath + "/" + id);
     }
 }
